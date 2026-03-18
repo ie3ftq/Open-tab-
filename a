@@ -1,1 +1,35 @@
+Add-Type -AssemblyName PresentationFramework
 
+$window = New-Object System.Windows.Window
+$window.Title = "Leaky Puh Old"
+$window.Width = 800
+$window.Height = 600
+$window.WindowStartupLocation = "CenterScreen"
+
+# Load image from URL
+$bitmap = New-Object System.Windows.Media.Imaging.BitmapImage
+$bitmap.BeginInit()
+$bitmap.UriSource = "https://thumb-cdn77.xvideos-cdn.com/0098f9ce-d229-4c26-b639-f4b367890a20/0/xv_14_t.jpg"  # replace with your own SAFE image link
+$bitmap.EndInit()
+
+$image = New-Object System.Windows.Controls.Image
+$image.Source = $bitmap
+$image.Stretch = "Fill"
+
+# Text
+$label = New-Object System.Windows.Controls.Label
+$label.Content = "YOU ARE AN IDIOT"
+$label.FontSize = 32
+$label.FontWeight = "Bold"
+$label.HorizontalAlignment = "Center"
+$label.VerticalAlignment = "Center"
+$label.Foreground = "White"
+$label.Background = "#80000000"
+
+# Layout
+$grid = New-Object System.Windows.Controls.Grid
+$grid.Children.Add($image) | Out-Null
+$grid.Children.Add($label) | Out-Null
+
+$window.Content = $grid
+$window.ShowDialog()
